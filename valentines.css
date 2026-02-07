@@ -1,0 +1,66 @@
+* {
+  font-family: 'Segoe UI', sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff4d6d, #ffb3c6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  background: white;
+  width: 90%;
+  max-width: 400px;
+  padding: 30px 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  position: relative;
+  & img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+}
+
+.question {
+  margin: 20px 0;
+  font-size: 18px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.yes {
+  background: pink;
+  color: black;
+  cursor: pointer;
+}
+
+.no {
+  background: #000000;
+  color: white;
+  position: absolute;
+  cursor: pointer;
+}
+
+#result {
+  margin-top: 25px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #ff1f4f;
+}
