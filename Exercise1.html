@@ -1,95 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ABA Bank — Home</title>
+    <meta name="description" content="ABA Bank — Trusted partner for cards, mobile banking, loans and investments.">
+    <link rel="icon" href="data:,">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        
+        .hero { background: linear-gradient(90deg,#0d6efd22,#6c757d11); border-radius: .5rem; padding: 3rem 1.5rem; }
+        .hero .img-fluid {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: .5rem;
+            box-shadow: 0 6px 18px rgba(13,110,253,0.12);
+        }
+
+       
+        .card-img-top {
+            width: 100%;
+            height: 120px;       
+            object-fit: cover; 
+            background: #f8f9fa;
+            padding: 0;         
+            border-top-left-radius: .5rem;
+            border-top-right-radius: .5rem;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+        .card.h-100:hover .card-img-top {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.07);
+        }
+
+       
+        .card-body { min-height: 140px; display: flex; flex-direction: column; }
+
+        footer { font-size: .9rem; }
+    </style>
 </head>
-<body class="w-100 h-100">
-    <!-- Fixed-top navbar (markup fixed) -->
-    <nav class="navbar navbar-dark bg-dark fixed-top navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img style="width: 30px; height: 30px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfgP19hmQFgsVVd6zRN3TgO_FDMNKwAr1Kw&s" alt="Logo" class="me-2">
-                ABA BANK
+<body class="d-flex flex-column min-vh-100" style="padding-top:72px;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="/" aria-label="ABA Bank home" title="Go to ABA Bank home">
+                <img src="https://informal.digitaleconomy.gov.kh/images/ministry-icon/aba_round.png" alt="ABA logo" width="36" height="36" class="me-2 rounded">
+                <strong>ABA BANK</strong>
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarContent">
+            <div class="collapse navbar-collapse" id="navMain">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Features</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" aria-current="page">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Support</a></li>
                 </ul>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-light" type="submit">🔍</button>
+                <form class="d-flex" role="search" aria-label="Site search">
+                    <input class="form-control me-2" type="search" placeholder="Search products" aria-label="Search">
+                    <button class="btn btn-outline-light" type="submit">Search</button>
                 </form>
             </div>
         </div>
     </nav>
 
-    <main class="container mt-5 pt-5">
-        <h1 class="text-center">Welcome to ABA Bank</h1>
-        <p class="text-center">Your trusted partner in financial services.</p>
-
-        <div class="text-center mb-4">
-            <a href="#" class="btn btn-primary">Get Started</a>
-        </div>
-
-        <!-- Responsive row/col layout for cards -->
-        <div class="row gy-4">
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img style="width: auto; height: 100px; object-fit: contain;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfgP19hmQFgsVVd6zRN3TgO_FDMNKwAr1Kw&s" class="card-img-top" alt="ABA Bank Card">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">ABA Bank Card</h5>
-                        <p class="card-text">Experience the convenience and security of our ABA Bank Card for all your transactions.</p>
-                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
-                    </div>
+    <main class="container my-4" role="main">
+        <section class="hero mb-4">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="display-6 mb-2">Banking made simple</h1>
+                    <p class="lead mb-3">Personal and business accounts, secure cards, mobile banking and loans — trusted advice to grow your wealth.</p>
+                    <p>
+                        <a href="#" class="btn btn-primary me-2">Get Started</a>
+                        <a href="#" class="btn btn-outline-secondary">Contact Sales</a>
+                    </p>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img src="https://i.ytimg.com/vi/gYXlFZwrRu0/maxresdefault.jpg" class="img-fluid rounded" alt="People using ABA mobile app">
                 </div>
             </div>
+        </section>
 
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img style="width: auto; height: 100px; object-fit: contain;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfgP19hmQFgsVVd6zRN3TgO_FDMNKwAr1Kw&s" class="card-img-top" alt="Mobile Banking">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">ABA Mobile Banking</h5>
-                        <p class="card-text">Manage your finances on the go with our user-friendly ABA Mobile Banking app.</p>
-                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
-                    </div>
+        <section aria-label="Products and services" class="mb-5">
+            <h2 class="h4 mb-3 text-center">Our services</h2>
+
+            <div class="row gy-4">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                    <article class="card h-100">
+                        <img src="https://www.ababank.com/fileadmin/user_upload/Payment_Cards/Debit/payment_cards_banner_v2.jpg" class="card-img-top" alt="ABA Bank Card">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h6 card-title">ABA Bank Card</h3>
+                            <p class="card-text">Secure contactless payments and global acceptance with fraud protection.</p>
+                            <a href="#" class="btn btn-sm btn-primary mt-auto">Learn more</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                    <article class="card h-100">
+                        <img src="https://i.ytimg.com/vi/5C03naP28UQ/maxresdefault.jpg" class="card-img-top" alt="ABA Mobile Banking">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h6 card-title">Mobile Banking</h3>
+                            <p class="card-text">Full account control from your phone with secure login and instant alerts.</p>
+                            <a href="#" class="btn btn-sm btn-primary mt-auto">Learn more</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                    <article class="card h-100">
+                        <img src="https://www.ababank.com/fileadmin/user_upload/Landing_Page/ABA_Mortgage_loan/aba_martgage_loan_lp_en_v3.jpg" class="card-img-top" alt="Loans and mortgage">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h6 card-title">Loans</h3>
+                            <p class="card-text">Flexible personal and business lending with competitive rates.</p>
+                            <a href="#" class="btn btn-sm btn-primary mt-auto">Learn more</a>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+                    <article class="card h-100">
+                        <img src="https://www.ababank.com/fileadmin/user_upload/Landing_Page/Trading_Account/ABA_Mobile_Trading_LP_EN.jpg" class="card-img-top" alt="Investments and wealth">
+                        <div class="card-body d-flex flex-column">
+                            <h3 class="h6 card-title">Investments</h3>
+                            <p class="card-text">Expert advice and tailored portfolios to grow your wealth long term.</p>
+                            <a href="#" class="btn btn-sm btn-primary mt-auto">Learn more</a>
+                        </div>
+                    </article>
                 </div>
             </div>
+        </section>
 
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img style="width: auto; height: 100px; object-fit: contain;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfgP19hmQFgsVVd6zRN3TgO_FDMNKwAr1Kw&s" class="card-img-top" alt="Loans">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">ABA Loans</h5>
-                        <p class="card-text">Explore our range of loan options designed to meet your financial needs.</p>
-                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
-                    </div>
+        <section class="bg-light p-4 rounded mb-5" aria-labelledby="why-title">
+            <h2 id="why-title" class="h5 mb-3 text-center">Why choose ABA Bank?</h2>
+            <div class="row text-center">
+                <div class="col-12 col-md-4 mb-3">
+                    <strong>Trusted</strong>
+                    <p class="mb-0">Years of banking experience and secure systems.</p>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <strong>Convenient</strong>
+                    <p class="mb-0">Mobile-first features and 24/7 support.</p>
+                </div>
+                <div class="col-12 col-md-4 mb-3">
+                    <strong>Competitive</strong>
+                    <p class="mb-0">Great rates and transparent fees.</p>
                 </div>
             </div>
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100">
-                    <img style="width: auto; height: 100px; object-fit: contain;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwfgP19hmQFgsVVd6zRN3TgO_FDMNKwAr1Kw&s" class="card-img-top" alt="Investments">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">ABA Investments</h5>
-                        <p class="card-text">Discover our investment opportunities and grow your wealth with expert advice.</p>
-                        <a href="#" class="btn btn-primary mt-auto">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </section>
     </main>
 
+    <footer class="mt-auto bg-dark text-light py-4">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="mb-2 mb-md-0 small">&copy; <span id="year"></span> ABA Bank — All rights reserved.</div>
+            <nav aria-label="Footer">
+                <a class="text-light small me-3" href="#">Privacy</a>
+                <a class="text-light small me-3" href="#">Terms</a>
+                <a class="text-light small" href="#">Contact</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
