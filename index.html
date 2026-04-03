@@ -1,28 +1,252 @@
 <!DOCTYPE html>
-<html lang="km">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine's day 💘</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Advanced Coffee Shop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.card img {
+  height: 200px;
+  object-fit: cover;
+}
+.card:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="box">
-    <img src="https://i.pinimg.com/1200x/9f/28/f4/9f28f455be38aabcaa03e7b7ac6110da.jpg" alt="">
-    <h1>💖Valentine's Day 💖</h1>
-    <p class="question">
-      Do you love me ? 
-    </p>
-
-    <div class="buttons">
-      <button class="yes" onclick="sayYes()">YES 💘</button>
-      <button class="no" id="noBtn" onmouseover="moveNo()">NO 💔</button>
+<!-- LOGIN -->
+<div class="modal fade" id="loginModal" data-bs-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header"><h5>Login</h5></div>
+      <div class="modal-body">
+        <input id="username" class="form-control mb-2" placeholder="Username">
+        <input id="password" type="password" class="form-control" placeholder="Password">
+        <p id="login-error" class="text-danger"></p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary w-100" onclick="login()">Login</button>
+      </div>
     </div>
-    <p id="result"></p>
   </div>
+</div>
 
-  <script src="script.js">
-  </script>
+<!-- NAVBAR -->
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container d-flex justify-content-between align-items-center">
+    <span class="navbar-brand">☕ Coffee Shop</span>
+
+    <h5 class="text-white m-0">Menu</h5>
+
+    <div class="text-white">
+      👤 <span id="user-role">Guest</span>
+    </div>
+
+    <div>
+      <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#cartModal">
+        🛒 (<span id="cart-count">0</span>)
+      </button>
+      <button class="btn btn-danger" onclick="logout()">Logout</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ADMIN PANEL -->
+<div class="container my-4" id="admin-panel" style="display:none;">
+  <h4>👑 Admin Dashboard</h4>
+  <div class="row g-2">
+    <div class="col-md-3"><input id="pName" class="form-control" placeholder="Product name"></div>
+    <div class="col-md-2"><input id="pPrice" type="number" class="form-control" placeholder="Price"></div>
+    <div class="col-md-4"><input id="pImg" class="form-control" placeholder="Image URL"></div>
+    <div class="col-md-2"><button class="btn btn-success w-100" onclick="addProduct()">Add</button></div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="container py-4">
+  <div class="row g-4" id="card-container"></div>
+</div>
+
+<!-- CART -->
+<div class="modal fade" id="cartModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5>🛒 Your items</h5>
+        <button class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" id="cart-items"></div>
+      <div class="modal-footer">
+        <h6>Total: <span id="cart-total">$0</span></h6>
+        <button class="btn btn-success" onclick="checkout()">Checkout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// USERS
+const users = [
+  { username: "admin", password: "123", role: "Admin" },
+  { username: "user", password: "123", role: "User" }
+];
+
+let currentUser = localStorage.getItem("user");
+
+// LOGIN CHECK
+window.onload = function () {
+  if (!currentUser) {
+    new bootstrap.Modal(document.getElementById('loginModal')).show();
+  } else {
+    document.getElementById("user-role").innerText = currentUser;
+    checkAdmin();
+  }
+};
+
+// LOGIN
+function login() {
+  const u = document.getElementById("username").value;
+  const p = document.getElementById("password").value;
+
+  const found = users.find(x => x.username === u && x.password === p);
+
+  if (found) {
+    localStorage.setItem("user", found.role);
+    location.reload();
+  } else {
+    document.getElementById("login-error").innerText = "Wrong login!";
+  }
+}
+
+// LOGOUT
+function logout() {
+  localStorage.removeItem("user");
+  location.reload();
+}
+
+// ADMIN CHECK
+function checkAdmin() {
+  if (currentUser === "Admin") {
+    document.getElementById("admin-panel").style.display = "block";
+  }
+}
+
+// PRODUCTS
+let products = JSON.parse(localStorage.getItem("products")) || [
+  { id: 1, name: "Coffee", price: 2.5, img: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400" },
+  { id: 2, name: "Milk Tea", price: 3.0, img: "https://images.unsplash.com/photo-1558857563-c0c0f3c7c2d0?w=400" },
+  { id: 3, name: "Latte", price: 3.5, img: "https://images.unsplash.com/photo-1523942839745-7848d6f0f2e9?w=400" }
+];
+
+// DISPLAY PRODUCTS
+const container = document.getElementById("card-container");
+
+function displayProducts() {
+  container.innerHTML = "";
+
+  products.forEach(p => {
+    container.innerHTML += `
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+      <div class="card shadow h-100">
+        <img src="${p.img}" class="card-img-top">
+        <div class="card-body text-center">
+          <h5>${p.name}</h5>
+          <p class="text-success">$${p.price}</p>
+
+          <button class="btn btn-dark w-100 mb-2" onclick="addToCart(${p.id})">Add</button>
+
+          ${currentUser === "Admin" ? 
+            `<button class="btn btn-danger w-100" onclick="deleteProduct(${p.id})">Delete</button>` 
+            : ""}
+        </div>
+      </div>
+    </div>`;
+  });
+}
+
+// ADD PRODUCT
+function addProduct() {
+  const name = document.getElementById("pName").value;
+  const price = parseFloat(document.getElementById("pPrice").value);
+  const img = document.getElementById("pImg").value;
+
+  if (!name || !price || !img) return alert("Fill all fields!");
+
+  products.push({ id: Date.now(), name, price, img });
+  saveProducts();
+}
+
+// DELETE PRODUCT
+function deleteProduct(id) {
+  products = products.filter(p => p.id !== id);
+  saveProducts();
+}
+
+// SAVE PRODUCTS
+function saveProducts() {
+  localStorage.setItem("products", JSON.stringify(products));
+  displayProducts();
+}
+
+// CART
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(id) {
+  const product = products.find(p => p.id === id);
+  cart.push(product);
+  saveCart();
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCart();
+}
+
+function updateCart() {
+  document.getElementById("cart-count").innerText = cart.length;
+
+  let total = 0;
+  let html = "";
+
+  cart.forEach((item, i) => {
+    total += item.price;
+    html += `
+    <div class="d-flex justify-content-between mb-2">
+      <span>${item.name} - $${item.price}</span>
+      <button class="btn btn-sm btn-danger" onclick="removeItem(${i})">X</button>
+    </div>`;
+  });
+
+  document.getElementById("cart-items").innerHTML = html;
+  document.getElementById("cart-total").innerText = "$" + total.toFixed(2);
+}
+
+function removeItem(i) {
+  cart.splice(i, 1);
+  saveCart();
+}
+
+function checkout() {
+  if (cart.length === 0) return alert("Cart is empty!");
+  alert("Order successful 🎉");
+  cart = [];
+  saveCart();
+}
+
+// INIT
+displayProducts();
+updateCart();
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
