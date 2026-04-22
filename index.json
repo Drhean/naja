@@ -1,0 +1,72 @@
+[
+  {
+    "id": "1",
+    "name": "Iced Coffee",
+    "description": "Cold coffee with milk",
+    "price": "2.50",
+    "image": "https://cdn.loveandlemons.com/wp-content/uploads/2025/05/how-to-make-iced-coffee-at-home.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Hot Coffee",
+    "description": "Fresh hot brewed coffee",
+    "price": "2.00",
+    "image": "https://thumbs.dreamstime.com/b/cup-hot-coffee-foam-sharp-focus-foam-coffee-beans-scattered-background-burlap-background-beautiful-light-photo-345328512.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Milk Tea",
+    "description": "Sweet milk tea with ice",
+    "price": "2.20",
+    "image": "https://worldlytreat.com/wp-content/uploads/2024/04/Tiger-milk-tea-3.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Green Tea",
+    "description": "Natural green tea",
+    "price": "1.50",
+    "image": "https://www.harney.com/cdn/shop/files/brew-green-tea.jpg?v=1612990930&width=1000"
+  },
+  {
+    "id": "5",
+    "name": "Thai Tea",
+    "description": "Creamy Thai style tea",
+    "price": "2.30",
+    "image": "https://i.imgur.com/thaitea.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Orange Juice",
+    "description": "Fresh squeezed orange juice",
+    "price": "1.80",
+    "image": "https://i.imgur.com/orange.jpg"
+  },
+  {
+    "id": "7",
+    "name": "Apple Juice",
+    "description": "Cold apple juice",
+    "price": "1.70",
+    "image": "https://i.imgur.com/apple.jpg"
+  },
+  {
+    "id": "8",
+    "name": "Lemon Tea",
+    "description": "Tea with fresh lemon flavor",
+    "price": "1.90",
+    "image": "https://i.imgur.com/lemontea.jpg"
+  },
+  {
+    "id": "9",
+    "name": "Cappuccino",
+    "description": "Coffee with milk foam",
+    "price": "2.80",
+    "image": "https://i.imgur.com/cappuccino.jpg"
+  },
+  {
+    "id": "10",
+    "name": "Chocolate Milk",
+    "description": "Sweet chocolate drink",
+    "price": "2.10",
+    "image": "https://i.imgur.com/chocolate.jpg"
+  }
+]
